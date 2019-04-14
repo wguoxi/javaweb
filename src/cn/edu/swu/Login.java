@@ -1,7 +1,7 @@
 package cn.edu.swu;
 
 import javax.servlet.http.*;
-
+import javax.servlet.RequestDispatcher;
 public class Login extends HttpServlet {
 
 	public void doPost(HttpServletRequest req, HttpServletResponse resp){
@@ -11,6 +11,10 @@ public class Login extends HttpServlet {
 		String pass = req.getParameter("pass");
 		try{
 			System.out.println(new String(user.getBytes("ISO-8859-1"), "UTF-8"));
+				String path = "hello.jsp";
+		RequestDispatcher requestDispatcher = req.getRequestDispatcher("/" + path);
+		
+		requestDispatcher.forward(req, resp); 
 		} catch(Exception e) {
 			System.out.println("encoding error");
 		}
